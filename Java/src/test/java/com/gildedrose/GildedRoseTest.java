@@ -126,7 +126,7 @@ class GildedRoseTest {
 	}
 
 	@Test
-	void legendaryItemNeverDecreaseInTest() {
+	void legendaryItemNeverDecreaseTest() {
 		Item item = new Item("Sulfuras, Hand of Ragnaros", 0, 80);
 		GildedRose app = new GildedRose(new Item[] { item });
 
