@@ -17,9 +17,10 @@ public class InventoryItem {
                 return new Cheese(item);
             case BackstagePass.NAME:
                 return new BackstagePass(item);
+            case Conjuring.NAME:
+                return new Conjuring(item);
             default:
                 return new InventoryItem(item);
-
         }
     }
 

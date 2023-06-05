@@ -249,4 +249,41 @@ class GildedRoseTest {
 		assertEquals(-2, items[1].sellIn);
 		assertEquals(5, items[1].quality);
 	}
+
+    @Test
+    void conjuringItemQualityAndSellInChangeEachDayTest() {
+        int startingSellIn = 10;
+        int startingQuality = 20;
+        final Item item = new Item("Conjuring", startingSellIn, startingQuality);
+        GildedRose app = new GildedRose(new Item[] { item });
+
+        app.updateInventory();
+
+        assertEquals(startingSellIn - 1, item.sellIn);
+        assertEquals(startingQuality - 2, item.quality);
+    }
+
+    @Test
+    void conjuringItemQualityIfExpiredTest() {
+        int startingSellIn = -1;
+        int startingQuality = 20;
+        final Item item = new Item("Conjuring", startingSellIn, startingQuality);
+        GildedRose app = new GildedRose(new Item[] { item });
+
+        app.updateInventory();
+
+        assertEquals(startingSellIn - 1, item.sellIn);
+        assertEquals(startingQuality - 4, item.quality);
+    }
+
+    @Test
+    void conjuringItemQualityReducedToZeroTest() {
+        Item item = new Item("Conjuring", -1, 1);
+        GildedRose app = new GildedRose(new Item[] { item });
+
+        app.updateInventory();
+
+        assertEquals(0, item.quality);
+    }
 }
+
